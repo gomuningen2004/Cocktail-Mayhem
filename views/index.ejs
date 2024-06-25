@@ -1,0 +1,36 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container">
+    <div class="text-center my-4">
+        <h1>Search for cocktails and drinks 🍹 🍸</h1>
+    </div>
+    <div class="row my-4">
+        <form action="/" method="GET" class="mb-4">
+            <div class="input-group">
+                <input type="text" name="letter" maxlength="1" class="form-control rounded" placeholder="Enter a single alphabet" required style="width: auto;">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit" style="margin-left: 10px; background-color: yellow; color: black;"><b>Search</b></button>
+                </div>
+            </div>
+        </form>        
+    </div>
+
+    <div class="row">
+        <% if (content && content.drinks) { %>
+            <% content.drinks.forEach(function(drink) { %>
+                <div class="col-md-3 d-flex align-items-stretch">
+                    <div class="card mb-4" style="width: 100%;">
+                        <a href="/drink/<%= drink.idDrink %>" style="text-decoration: none; color: inherit;">
+                            <img src="<%= drink.strDrinkThumb %>/preview" class="card-img-top" alt="<%= drink.strDrink %>">
+                            <div class="card-body">
+                                <h5 class="card-title text-center"><%= drink.strDrink %></h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            <% }); %>
+        <% } %>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs') %>

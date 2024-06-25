@@ -1,0 +1,40 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container-fluid d-flex flex-column" style="min-height: 76vh;">
+    <div class="row flex-grow-1 justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="text-center my-4">
+                <h1>Here is a drink that you may enjoy! 🍻</h1>
+            </div>
+            <div class="card mb-3" style="width: 100%;">
+                <div class="row g-0">
+                    <div class="col-md-4 d-flex justify-content-center align-items-center">
+                        <img src="<%= content.drinks[0].strDrinkThumb %>/preview" class="img-fluid rounded d-block" alt="<%= content.drinks[0].strDrink %>">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="border border-black rounded p-3 text-center my-2">
+                                <h5 class="card-title"><b><%= content.drinks[0].strDrink %></b></h5>
+                                <p class="card-text" style="color: blue;">#<%= content.drinks[0].strAlcoholic %> #<%= content.drinks[0].strCategory %></p>
+                            </div>
+                            <div class="border border-black rounded p-3">
+                                <h5 class="card-text text-center"><b>Ingredients</b></h5>
+                                <% for(let i = 1; i <= 15; i++) { %>
+                                    <% if(content.drinks[0][`strMeasure${i}`] && content.drinks[0][`strIngredient${i}`]) { %>
+                                        <p class="card-text"><%= content.drinks[0][`strMeasure${i}`] %> of <%= content.drinks[0][`strIngredient${i}`] %></p>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                            <div class="border border-black rounded p-3 my-2">
+                                <h5 class="card-text text-center"><b>Instructions</b></h5>
+                                <p class="card-text"><%= content.drinks[0].strInstructions %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer.ejs') %>
